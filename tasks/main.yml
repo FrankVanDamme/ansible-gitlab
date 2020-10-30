@@ -46,6 +46,7 @@
     restart_policy: always
 
 - name: Open ports
+  when: gitlab_ufw
   ufw:
     rule: allow
     port: "{{ item.value }}"

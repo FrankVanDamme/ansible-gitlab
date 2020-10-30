@@ -103,6 +103,9 @@ gitlab_unicorn:
 # http://docs.gitlab.com/ce/administration/container_registry.html
 registry_url: "https://registry.example.com"
 
+# enable opening firewall ports using ufw
+gitlab_ufw: true
+
 # Options for restoring gitlab from backup.
 gitlab_restore:
   restoring: false # Enable restoring from backup
