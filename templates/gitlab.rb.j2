@@ -750,7 +750,7 @@ nginx['ssl_protocols'] = "{{ gitlab_nginx.ssl_protocols }}"
 # nginx['custom_nginx_config'] = "include /etc/nginx/conf.d/example.conf;"
 # nginx['proxy_read_timeout'] = 3600
 # nginx['proxy_connect_timeout'] = 300
-{% if gitlab_nginx.behind_ssl_proxy == true %}
+{% if gitlab_nginx.behind_ssl_proxy | bool == true %}
 nginx['listen_port'] = 80
 nginx['listen_https'] = false
 nginx['proxy_set_headers'] = {
