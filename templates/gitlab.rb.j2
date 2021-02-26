@@ -376,15 +376,33 @@ gitlab_rails['rate_limit_period'] = {{ gitlab_rate_limit.period }}
 ###! Docs: https://docs.gitlab.com/omnibus/settings/smtp.html
 ###! **Use smtp instead of sendmail/postfix.**
 
+{% if gitlab_smtp.enabled  == true %}
 gitlab_rails['smtp_enable'] = {{ gitlab_smtp.enabled | bool | lower }}
+{% if gitlab_smtp.host is defined %}
 gitlab_rails['smtp_address'] = "{{ gitlab_smtp.host }}"
-gitlab_rails['smtp_port'] = {{ gitlab_smtp.port }}
+{% endif %}
+{% if gitlab_smtp.port is defined %}
+gitlab_rails['smtp_port'] = "{{ gitlab_smtp.port }}"
+{% endif %}
+{% if gitlab_smtp.username is defined %}
 gitlab_rails['smtp_user_name'] = "{{ gitlab_smtp.username }}"
+{% endif %}
+{% if gitlab_smtp.password is defined %}
 gitlab_rails['smtp_password'] = "{{ gitlab_smtp.password }}"
+{% endif %}
+{% if gitlab_smtp.domain is defined %}
 gitlab_rails['smtp_domain'] = "{{ gitlab_smtp.domain }}"
-gitlab_rails['smtp_authentication'] = "login"
-gitlab_rails['smtp_enable_starttls_auto'] = true
+{% endif %}
+{% if gitlab_smtp.authentication is defined %}
+gitlab_rails['smtp_authentication'] = "{{ gitlab_smtp.authentication }}"
+{% endif %}
+{% if gitlab_smtp.enable_starttls_auto is defined %}
+gitlab_rails['smtp_enable_starttls_auto'] = {{ gitlab_smtp.enable_starttls_auto | bool | lower }}
+{% endif -%}
+{% if gitlab_smtp.tls is defined %}
 gitlab_rails['smtp_tls'] = {{ gitlab_smtp.tls | bool | lower }}
+{% endif %}
+{% endif %}
 
 
 ###! **Can be: 'none', 'peer', 'client_once', 'fail_if_no_peer_cert'**

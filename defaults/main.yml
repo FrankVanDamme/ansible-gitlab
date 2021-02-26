@@ -63,14 +63,12 @@ gitlab_ports:
 gitlab_network_mode: bridge
 
 # https://docs.gitlab.com/omnibus/settings/smtp.html
+# other parameters: username, password, tls (bool), domain
 gitlab_smtp:
   enabled: true
   host: mailtrap.io
   port: 2525
-  username: username
-  password: password
-  tls: true
-  domain: example.com
+  authentication: login
 
 # Email Settings
 gitlab_email:
