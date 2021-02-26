@@ -5,6 +5,22 @@ Start Gitlab Omnibus service as Docker container.
 
 ## Install
 
+Create a requirements file:
+
+```yaml
+---
+- src: https://github.com/FrankVanDamme/ansible-gitlab.git
+  version: f704a8e4e7feee79747507d54fe3235e93682ecb
+  name: gitlab
+```
+
+Install it:
+```bash
+ansible-galaxy install --force -r requirements.yml
+```
+
+Original version:
+
 ```bash
 ansible-galaxy install Furdarius.gitlab
 ```

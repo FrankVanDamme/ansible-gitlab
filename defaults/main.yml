@@ -51,7 +51,7 @@ gitlab_dir:
   data: /srv/gitlab/data
 
 # Gitlab network setting
-# Port will be availible on host machine
+# Port will be availaible on host machine
 gitlab_ports:
   http: 80
   https: 443
